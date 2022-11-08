@@ -1,32 +1,57 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    
+    int sparseMatrix[4][5] =
+    {
+        {0 , 0 , 3 , 0 , 4 },
+        {0 , 0 , 5 , 7 , 0 },
+        {0 , 0 , 0 , 0 , 0 },
+        {0 , 2 , 6 , 0 , 0 }
+    };
+ 
+    int size = 0;
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 5; j++)
+            if (sparseMatrix[i][j] != 0)
+                size++;
+ 
+    
+    int compactMatrix[3][size];
+ 
+    
+    int k = 0;
+    cout<<"row    ";
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 5; j++)
+            if (sparseMatrix[i][j] != 0)
+            {
+                compactMatrix[0][k] = i;
+                cout<<i<<" ";
+                k++;
+            }
+       cout<<"\n"; 
+       cout<<"column ";
+      for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 5; j++)
+            if (sparseMatrix[i][j] != 0)
+            {
+                compactMatrix[1][k] = j;
+                cout<<j<<" ";
+                k++;
+            }
+        cout<<"\n";
+        cout<<"value  ";
+     for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 5; j++)
+            if (sparseMatrix[i][j] != 0)
+            {
+                compactMatrix[2][k] = sparseMatrix[i][j];;
+                cout<<sparseMatrix[i][j]<<" ";
+                k++;
+            } 
+   
+    return 0;
+}
